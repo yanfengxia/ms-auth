@@ -11,8 +11,8 @@ ext {
     springCloudVersion = '2.2.5.RELEASE'
 }
 
-group 'org.example.dms.auth'
-version '1.0-SNAPSHOT'
+group 'com.beta.ms'
+version '1.0'
 
 repositories {
     mavenCentral()
