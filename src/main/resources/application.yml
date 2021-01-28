@@ -32,7 +32,7 @@ spring:
 key: ${SIGN_KEY:7R9SATCVDWEXGZH2J4M5N6Q8R9SBUCVDXFYGZJ3K4M6P7Q8SATBUCWEXFY}
 logging:
   file:
-    name: ${LOG_URL:/var/log/ms/oauth.log}
+    name: ${LOG_URL:/var/log/ms/ms-oauth.log}
     max-history: ${LOG_RETENTION_MAX_DAYS:14}
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss}[%-5level][%t][%X{traceId}|%X{spanId}][%X{tid}][%c{1.}] %msg%n"
