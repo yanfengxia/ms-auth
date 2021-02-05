@@ -2,11 +2,10 @@ package com.beta.ms.auth.controller;
 
 import com.beta.ms.auth.bridge.TokenBridge;
 import com.beta.ms.auth.entity.UserEntity;
+import com.beta.ms.auth.exception.*;
 import com.beta.ms.auth.model.Token;
 import com.beta.ms.auth.ro.LoginRO;
 import com.beta.ms.auth.ro.TokenRO;
-import com.beta.ms.auth.exception.InvalidPasswordException;
-import com.beta.ms.auth.exception.InvalidUserNameException;
 import com.beta.ms.auth.service.TokenService;
 import com.beta.ms.auth.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +41,22 @@ public class AuthController {
             }
         } else {
             throw new InvalidUserNameException();
+        }
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity registerUser(@Validated @RequestBody LoginRO loginRO) throws Exception {
+        UserEntity userEntity = userService.getUserEntityByUserName(loginRO.getUsername());
+
+        if (userEntity != null) {
+           throw new UserExistException();
+        } else {
+            UserEntity savedEntity = userService.createuser(loginRO);
+            if (savedEntity != null && savedEntity.getId() != null) {
+                return new ResponseEntity("", HttpStatus.OK);
+            } else {
+                throw new UserRegisterException();
+            }
         }
     }
 }
