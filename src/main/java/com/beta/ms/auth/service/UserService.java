@@ -45,7 +45,7 @@ public class UserService {
         }
     }
 
-    public UserEntity createuser(LoginRO loginRO) {
+    public UserEntity createUser(LoginRO loginRO) {
         try {
 
             return  userEntityDao.save(UserEntity.builder()

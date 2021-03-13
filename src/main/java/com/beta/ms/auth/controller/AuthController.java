@@ -51,7 +51,7 @@ public class AuthController {
         if (userEntity != null) {
            throw new UserExistException();
         } else {
-            UserEntity savedEntity = userService.createuser(loginRO);
+            UserEntity savedEntity = userService.createUser(loginRO);
             if (savedEntity != null && savedEntity.getId() != null) {
                 return new ResponseEntity("", HttpStatus.OK);
             } else {
